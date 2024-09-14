@@ -1,0 +1,77 @@
+#chat-box {
+  height: calc(100% - 20px);
+
+  ion-card-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+
+    .messages {
+      display: flex;
+      flex-direction: column-reverse;
+      overflow: auto;
+      max-height: 100%;
+      padding-bottom: 10px;
+      height: 0;
+
+      app-crown {
+        display: none;
+      }
+
+      .admin {
+        app-crown {
+          display: inline;
+          margin-right: 5px;
+        }
+        b {
+          color: teal;
+        }
+      }
+
+      b {
+        cursor: pointer;
+      }
+    }
+
+    input,
+    .chat-closed {
+      position: absolute;
+      bottom: 12px;
+      left: 16px;
+      width: calc(100% - 32px);
+      background: #333;
+      color: #fff;
+      border: 1px solid #444;
+      border-radius: 5px;
+      padding: 5px 8px;
+      box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .chat-closed {
+      color: #aaa;
+      display: flex;
+      align-items: center;
+
+      .discord-link {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        margin-left: 5px;
+
+        &:hover {
+          color: #7289da;
+        }
+
+        ion-icon {
+          font-size: 20px;
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}

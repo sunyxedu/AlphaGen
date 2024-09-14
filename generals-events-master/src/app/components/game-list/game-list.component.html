@@ -1,0 +1,9 @@
+<div class="games-container" *ngIf="games$ | async as games">
+  <h2 *ngIf="games.length">Recent Games</h2>
+  <app-game-summary
+    [game]="game"
+    [server]="event.server"
+    (nameClicked)="nameClicked.emit($event)"
+    *ngFor="let game of games; let i = index; trackBy: trackByFn">
+  </app-game-summary>
+</div>

@@ -1,0 +1,171 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+* {
+  font-family: 'Quicksand', sans-serif;
+}
+
+ion-header {
+  ion-toolbar {
+    height: 65px;
+    display: flex;
+    position: relative;
+
+    ion-title {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 0 200px;
+    }
+  }
+}
+ion-modal ion-header ion-toolbar ion-title {
+  padding: 0;
+}
+
+ion-title,
+.generals-title {
+  font-weight: bold;
+  font-size: 40px;
+  letter-spacing: 2.5px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+  text-shadow: 2px 2px teal;
+  transition: all .2s ease-in-out;
+  color: #fff;
+}
+
+ion-modal {
+  ion-header ion-toolbar {
+    --background: teal;
+    height: initial;
+
+    ion-title {
+      text-shadow: 2px 2px #000;
+      font-size: 30px;
+    }
+  }
+
+  ion-footer ion-toolbar {
+    --background: #1f2125;
+    text-align: center;
+  }
+}
+
+ion-button.generals-button {
+  --background: #fff !important;
+  --ion-toolbar-background: teal !important;
+  --color: teal !important;
+  box-shadow: 2px 2px teal;
+  margin: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: initial;
+  border: 0;
+  border-width: 0 !important;
+  outline: none !important;
+  white-space: nowrap;
+  --border-radius: 1px;
+
+  &.color-secondary {
+    --background: teal !important;
+    --ion-toolbar-background: #fff !important;
+    --color: #fff !important;
+    box-shadow: 2px 2px #000;
+
+    &:hover {
+      cursor: pointer;
+      opacity: initial;
+      box-shadow: 3px 3px #000;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    opacity: .9;
+    box-shadow: 3px 3px teal;
+  }
+}
+
+.center-container,
+.empty-container,
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  min-height: 100px;
+  width: 100%;
+  font-size: 20px;
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+a {
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.clickable {
+  cursor: pointer;
+
+  &:hover {
+    opacity: .9;
+  }
+}
+
+@media(max-width: 700px) {
+  :not(ion-modal) {
+    ion-header {
+      ion-toolbar {
+        ion-title {
+          position: initial;
+          top: initial;
+          left: initial;
+          width: 100%;
+          padding: 20px;
+          text-align: left;
+        }
+      }
+    }
+  }
+}
