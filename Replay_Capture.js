@@ -95,7 +95,7 @@ function getReplay(replayId, server = 'na') {
 }
 async function getData(player, name){
     var data=await getReplay(name);
-    output_file = "/Users/yuxuan/Documents/Gen_Bot/Replays/Game_Data/"+player+'/'+name+'.json';
+    output_file = "/Users/yuxuan/Documents/AlphaGen/Replays/Game_Data/"+player+'/'+name+'.json';
     await fs.writeFile(output_file,JSON.stringify(data,null,4));
 }
 // test = "zO-RrTDvE";
@@ -103,8 +103,8 @@ async function getData(player, name){
 Name = ["MeltedToast","Mithraaaa"];
 
 Name.forEach(async item => {
-    let input_file = `/Users/yuxuan/Documents/Gen_Bot/Replays/Total_Data/filtered_${item}.json`;
-    fs.mkdir('/Users/yuxuan/Documents/Gen_Bot/Replays/Game_Data/'+item, { recursive: true }, (err) => {
+    let input_file = `/Users/yuxuan/Documents/AlphaGen/Replays/Total_Data/filtered_${item}.json`;
+    fs.mkdir('/Users/yuxuan/Documents/AlphaGen/Replays/Game_Data/'+item, { recursive: true }, (err) => {
         if (err) {
             return console.error("Error creating directory:", err);
         }

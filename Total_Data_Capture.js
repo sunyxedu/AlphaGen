@@ -17,6 +17,6 @@ async function saveReplays(username,total,path){
 
 const Name = ['Mithraaaa','MeltedToast']
 Name.forEach(name => {
-    const filePath = `/Users/yuxuan/Documents/Gen_Bot/Replay/Total_Data/${name}.json`;
+    const filePath = `/Users/yuxuan/Documents/AlphaGen/Replay/Total_Data/${name}.json`;
     saveReplays(name, 10000, filePath);
 });

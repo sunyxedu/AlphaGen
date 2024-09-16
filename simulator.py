@@ -26,7 +26,7 @@ import pickle
 Name = ['MeltedToast', 'Mithraaaa']
 
 for name in Name:
-    dir="/Users/yuxuan/Documents/Gen_Bot/Replays/Game_Data/" + name
+    dir="/Users/yuxuan/Documents/AlphaGen/Replays/Game_Data/" + name
     replays=os.listdir(dir)
     for item in range(len(replays)):
         with open (dir+"/"+replays[item],"r",encoding="utf-8") as file:
@@ -233,11 +233,11 @@ for name in Name:
                         res1[x][y]=info[turn].state
                         res2[x][y]=info[turn].army
                     else:
-                        info[turn].state=1
-                        info[turn].army=0
+                        res1[x][y]=1
+                        res2[x][y]=0
                     
 
-            turns.append([info[turn].state, info[turn].army])
+            turns.append([res1, res2])
             # turns.append([turn,is_first,data["mapWidth"],data["mapHeight"],info[turn].myArmy,info[turn].myLand,info[turn].opArmy,info[turn].opLand,map_info,info[turn].start,info[turn].end,info[turn].is50])
 
         def endTurn():
@@ -274,11 +274,11 @@ for name in Name:
                     turn+=1
                     endTurn()
                     renew()
-                    
+                
                 new_data={}
                 new_data["id"]=data["id"]
                 new_data["turns"]=turns
-                with open("/Users/yuxuan/Documents/Gen_Bot/Replays/Match_Data/"+name+'/'+f"{replays[item][:-5]}.pkl","wb") as file:
+                with open("/Users/yuxuan/Documents/AlphaGen/Replays/Match_Data/"+name+'/'+f"{replays[item][:-5]}.pkl","wb") as file:
                     pickle.dump(new_data, file)
             else:
                 print(f"Warning: No moves found for replay {replays[item]}")
