@@ -267,20 +267,24 @@ for name in Name:
                     playerId=i
 
             renew()
-
-            for i in range(moves[len(moves)-1]["turn"]+1):
-                nextTurn()
-                turn+=1
-                endTurn()
-                renew()
-
+            
+            if moves:
+                for i in range(moves[len(moves)-1]["turn"]+1):
+                    nextTurn()
+                    turn+=1
+                    endTurn()
+                    renew()
+                    
+                new_data={}
+                new_data["id"]=data["id"]
+                new_data["turns"]=turns
+                with open("/Users/yuxuan/Documents/Gen_Bot/Replays/Match_Data/"+name+'/'+f"{replays[item][:-5]}.pkl","wb") as file:
+                    pickle.dump(new_data, file)
+            else:
+                print(f"Warning: No moves found for replay {replays[item]}")
+            
             # print(f"{item}: {replays[item]}, turns: {data["moves"][len(data["moves"])-1]["turn"]}")
 
-            new_data={}
-            new_data["id"]=data["id"]
-            new_data["turns"]=turns
             
-            with open("/Users/yuxuan/Documents/Gen_Bot/Replays/Match_Data/"+f"{replays[item][:-5]}.pkl","wb") as file:
-                pickle.dump(new_data, file)
 
         main()  
