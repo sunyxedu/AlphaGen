@@ -71,7 +71,9 @@ for name in Name:
         turn=0
         index=0
         playerId=0
-        turns=[]
+        features=[]
+        kings=[]
+        armies=[]
         moves=data["moves"]
         usernames=data["usernames"]
         map=[[Tile(0,0,-1) for _ in range(Map.width)] for _ in range(Map.height)]
@@ -207,7 +209,9 @@ for name in Name:
                     process(moves[index])
                     index+=1
 
-            global turns
+            global features
+            global kings
+            global armies
             map_info=[]
             for x in range(Map.height):
                 for y in range(Map.width):
@@ -223,21 +227,23 @@ for name in Name:
                     map_info.append(tmp)
 
             is_first=0
-            if (playerId==0 and turn%2==0) or (playerId==1 and turn%2==1): is_first=1
+            if (playerId==0 and turn%2==0) or (playerId==1 and turn%2==1): 
+                is_first=1
             res1 = [[0 for _ in range(25)] for _ in range(25)]
             res2 = [[0 for _ in range(25)] for _ in range(25)]
-            res = [[0 for _ in range(25)] for _ in range(25)]
             for x in range(25):
                 for y in range(25):
-                    if (x<=Map.height and y<=Map.width):
-                        res1[x][y]=info[turn].state
-                        res2[x][y]=info[turn].army
+                    if x<Map.height and y<Map.width:
+                        res1[x][y]=info[turn].state[x][y]
+                        res2[x][y]=info[turn].army[x][y]
                     else:
                         res1[x][y]=1
-                        res2[x][y]=0
-                    
-
-            turns.append([res1, res2])
+                        res2[x][y]=-1
+            # print(info[turn].army)
+            # print(len(res1),len(res1[0]))
+            features.append(res1)
+            armies.append(res2)
+            kings.append((Map.generals[playerId^1]//Map.width,Map.generals[playerId^1]%Map.width))
             # turns.append([turn,is_first,data["mapWidth"],data["mapHeight"],info[turn].myArmy,info[turn].myLand,info[turn].opArmy,info[turn].opLand,map_info,info[turn].start,info[turn].end,info[turn].is50])
 
         def endTurn():
@@ -276,15 +282,16 @@ for name in Name:
                     renew()
                 
                 new_data={}
+                # print(features[0])
                 new_data["id"]=data["id"]
-                new_data["turns"]=turns
+                new_data["features"]=features
+                new_data["armies"]=armies
+                new_data["kings"]=kings
                 with open("/Users/yuxuan/Documents/AlphaGen/Replays/Match_Data/"+name+'/'+f"{replays[item][:-5]}.pkl","wb") as file:
                     pickle.dump(new_data, file)
             else:
                 print(f"Warning: No moves found for replay {replays[item]}")
             
             # print(f"{item}: {replays[item]}, turns: {data["moves"][len(data["moves"])-1]["turn"]}")
-
-            
 
         main()  
