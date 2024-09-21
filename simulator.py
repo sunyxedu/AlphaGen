@@ -294,4 +294,4 @@ for name in Name:
             
             # print(f"{item}: {replays[item]}, turns: {data["moves"][len(data["moves"])-1]["turn"]}")
 
-        main()  
+        main()

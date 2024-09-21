@@ -11,9 +11,9 @@ for name in Name:
     print(len(data),end=' ')
     filtered_data=[
         entry for entry in data
-        if len(entry["ranking"])==2 and
-        entry["turns"]>=80 and 
-        start<=datetime.fromtimestamp(entry['started']/1000)
+        if entry["type"]=="1v1" and
+           entry["turns"]>=80 and 
+           start<=datetime.fromtimestamp(entry['started']/1000)
     ]
     output_file = "/Users/yuxuan/Documents/AlphaGen/Replays/Total_Data/filtered_"+name+".json"
     with open(output_file, "w", encoding="utf-8") as outfile:

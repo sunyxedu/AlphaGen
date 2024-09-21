@@ -88,6 +88,7 @@ function deserialize(serialized) {
       turn: serialized[3],
     };
   }
+  
 function getReplay(replayId, server = 'na') {
     const BASE_URL = `https://generalsio-replays-${server}.s3.amazonaws.com`;
     return http.get(`${BASE_URL}/${replayId}.gior`, {responseType: 'arraybuffer'})
@@ -98,8 +99,8 @@ async function getData(player, name){
     output_file = "/Users/yuxuan/Documents/AlphaGen/Replays/Game_Data/"+player+'/'+name+'.json';
     await fs.writeFile(output_file,JSON.stringify(data,null,4));
 }
-// test = "zO-RrTDvE";
-// getData(test);
+// test = "Gts0EzetP";
+// getData("TRY", test);
 Name = ["MeltedToast","Mithraaaa"];
 
 Name.forEach(async item => {
